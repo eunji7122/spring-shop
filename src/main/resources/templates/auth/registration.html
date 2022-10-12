@@ -1,0 +1,76 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+<!--    <link rel="stylesheet" href="fonts/icomoon/style2.css">-->
+
+<!--    <link rel="stylesheet" href="css/owl.carousel.min.css">-->
+
+    <!-- Bootstrap CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" href="/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <!-- Style -->
+    <link th:href="@{/css/style-auth.css}" href="/css/style-auth.css" rel="stylesheet" />
+
+    <title>Register</title>
+  </head>
+  <body>
+  
+
+
+  <div class="content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- <div class="col-md-6 order-md-2">
+          <img src="images/undraw_file_sync_ot38.svg" alt="Image" class="img-fluid">
+        </div> -->
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-12">
+              <div class="form-block">
+                  <div class="mb-4">
+                  <h3>Sign up</h3>
+                </div>
+                <form th:object="${member}" th:action method="post">
+                  <div class="form-group first">
+                    <label for="email"></label>
+                    <input type="text" class="form-control" th:field="*{email}" id="email" name="email" placeholder="Email">
+                  </div>
+
+                  <div class="form-group first">
+                    <label for="password"></label>
+                    <input type="password" class="form-control" th:field="*{password}" id="password" name="password" placeholder="Password">
+                  </div>
+
+                  <div class="form-group first">
+                    <label for="username"></label>
+                    <input type="text" class="form-control" th:field="*{username}" id="username" name="username" placeholder="Username">
+                  </div>
+
+                  <div class="form-group first">
+                    <label for="address"></label>
+                    <input type="text" class="form-control" th:field="*{address}" id="address" name="address" placeholder="Address">
+                  </div>
+
+                  <input style="margin-top: 50px" type="submit" value="Register" class="btn btn-pill text-white btn-block btn-primary">
+
+                  <a th:href="@{/auth/login}" class="google" >
+                    <span class="d-block text-center my-4 text-muted"> or sign in</span>
+                  </a>
+
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
