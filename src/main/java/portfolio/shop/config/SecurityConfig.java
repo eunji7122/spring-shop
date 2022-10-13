@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/swagger/**",
             "/swagger-ui/**",
             "/img/**",
-            "/css/**"
+            "/css/**",
     };
 
     private final UserDetailsService userDetailsService;
