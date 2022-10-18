@@ -22,17 +22,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final OAuth2UserService OAuth2UserService;
 
     private static final String[] AUTH_WHITELIST = {
-            "/v2/api-docs",
-            "/v3/api-docs/**",
-            "/configuration/ui",
-            "/swagger-resources/**",
-            "/configuration/security",
-            "/swagger-ui.html",
-            "/webjars/**",
-            "/file/**",
-            "/image/**",
-            "/swagger/**",
-            "/swagger-ui/**",
             "/img/**",
             "/css/**",
     };
