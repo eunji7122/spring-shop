@@ -14,7 +14,6 @@ public class CartController {
 
     @GetMapping
     public String cart() {
-        log.info("cart Page");
         return "cart/cart";
     }
 }
