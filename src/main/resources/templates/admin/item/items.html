@@ -1,0 +1,148 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Website menu 03</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link th:href="@{/css/style-admin.css}" rel="stylesheet" />
+
+</head>
+<body>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section">상품 관리</h2>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/admin/items}" >Admin</a>
+            <form action="#" class="searchform order-sm-start order-lg-last">
+                <div class="form-group d-flex">
+                    <input type="text" class="form-control pl-3" placeholder="Search">
+                    <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+                </div>
+            </form>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-item"><a th:href="@{/admin/items}" class="nav-link">상품</a></li>
+                    <li class="nav-item"><a th:href="@{/admin/members}" class="nav-link">회원</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+
+    <button class="btn mb-3 mr-3 btn-secondary">Secondary</button>
+
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-wrap">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Invoce</th>
+                                <th>Customer</th>
+                                <th>Ship</th>
+                                <th>Price</th>
+                                <th>Pruchased Price</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1001</th>
+                                <td>Mark Otto</td>
+                                <td>Japan</td>
+                                <td>$3000</td>
+                                <td>$1200</td>
+                                <td><a href="#" class="btn btn-success">Progress</a></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">1001</th>
+                                <td>Mark Otto</td>
+                                <td>Japan</td>
+                                <td>$3000</td>
+                                <td>$1200</td>
+                                <td><a href="#" class="btn btn-warning">Open</a></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">1001</th>
+                                <td>Mark Otto</td>
+                                <td>Japan</td>
+                                <td>$3000</td>
+                                <td>$1200</td>
+                                <td><a href="#" class="btn btn-danger">On hold</a></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">1001</th>
+                                <td>Mark Otto</td>
+                                <td>Japan</td>
+                                <td>$3000</td>
+                                <td>$1200</td>
+                                <td><a href="#" class="btn btn-success">Progress</a></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">1001</th>
+                                <td>Mark Otto</td>
+                                <td>Japan</td>
+                                <td>$3000</td>
+                                <td>$1200</td>
+                                <td><a href="#" class="btn btn-danger">On hold</a></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">1001</th>
+                                <td>Mark Otto</td>
+                                <td>Japan</td>
+                                <td>$3000</td>
+                                <td>$1200</td>
+                                <td><a href="#" class="btn btn-warning">Open</a></td>
+
+                            <tr>
+                                <th scope="row">1001</th>
+                                <td>Mark Otto</td>
+                                <td>Japan</td>
+                                <td>$3000</td>
+                                <td>$1200</td>
+                                <td><a href="#" class="btn btn-warning">Open</a></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">1001</th>
+                                <td>Mark Otto</td>
+                                <td>Japan</td>
+                                <td>$3000</td>
+                                <td>$1200</td>
+                                <td><a href="#" class="btn btn-success">Progress</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+</body>
+</html>
+
