@@ -32,12 +32,7 @@ public class OAuth2UserDetails implements UserDetails, OAuth2User {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> collection = new ArrayList<>();
-        collection.add(new GrantedAuthority() {
-            @Override
-            public String getAuthority() {
-                return member.getRole().toString();
-            }
-        });
+        collection.add((GrantedAuthority) () -> member.getRole().toString());
         return collection;
     }
 

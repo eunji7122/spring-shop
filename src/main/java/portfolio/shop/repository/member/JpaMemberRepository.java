@@ -4,7 +4,6 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import portfolio.shop.domain.member.Member;
-import portfolio.shop.domain.member.QMember;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -40,5 +39,13 @@ public class JpaMemberRepository implements MemberRepository{
             return Optional.ofNullable(findMember.get(0));
         }
         return Optional.empty();
+    }
+
+    @Override
+    public List<Member> findAll() {
+        return query.select(member)
+                .from(member)
+                .orderBy(member.id.asc())
+                .fetch();
     }
 }

@@ -4,13 +4,17 @@
     <title>Website menu 03</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link th:href="@{/css/style-admin.css}" rel="stylesheet" />
-
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#selectAll").change(function () {
+                $("input:checkbox").prop('checked', $(this).prop("checked"));
+            });
+        });
+    </script>
 </head>
 <body>
 <section class="ftco-section">
@@ -44,6 +48,42 @@
     </nav>
     <!-- END nav -->
 
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-wrap">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Platform</th>
+                                <th>Platform ID</th>
+                                <th><input id="selectAll" type="checkbox"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="member : ${members}">
+                                <td th:text="${member.id}"></td>
+                                <td th:text="${member.username}"></td>
+                                <td th:text="${member.email}"></td>
+                                <td th:text="${member.address}"></td>
+                                <td th:text="${member.provider}"></td>
+                                <td th:text="${member.providerId}"></td>
+                                <td>
+                                    <input type="checkbox" id="checkbox-list" name="checkbox-list" >
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </section>
 
 </body>
