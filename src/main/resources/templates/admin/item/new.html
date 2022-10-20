@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/css/style-admin-item.css}" rel="stylesheet">
     <title>Title</title>
 </head>
 <body>
+<section class="notice">
+    <div class="page-title">
+        <div class="container">
+            <h3><b>상품 등록</b></h3>
+        </div>
+    </div>
+
+    <div id="board-list">
+        <div class="container">
+            <form action="item.html" th:action method="post">
+                <table class="board-table">
+                    <tr>
+                        <th>상품명</th>
+                       <td><input type="text" id="name" name="name" style="width: 816px" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <th>가격</th>
+                        <td><input type="number" id="price" name="price" style="width: 816px" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <th>설명</th>
+                        <td><textarea class="form-control" cols="100" rows="30" name="detail" id="detail"></textarea>
+                        </td>
+                    </tr>
+                </table>
+
+                <div id="board-button" style="margin-top: 20px">
+                    <div class="container">
+                        <input class="btn btn-dark btn-cancel" type="button"
+                               th:onclick="|location.href='@{/admin/items}'|" value="취소">
+                        <input class="btn btn-dark btn-add" type="submit" value="등록">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
 
 </body>
 </html>

@@ -9,7 +9,7 @@
 <section class="notice">
     <div class="page-title">
         <div class="container">
-            <h3><b>상품 수정</b></h3>
+            <h3><b>상품 정보</b></h3>
         </div>
     </div>
 
@@ -19,24 +19,25 @@
                 <table class="board-table">
                     <tr>
                         <th>상품명</th>
-                        <td><input type="text" id="name" name="name" style="width: 816px" class="form-control" th:value="${item.name}"></td>
+                        <td><input type="text" id="name" name="name" style="width: 816px" class="form-control" th:value="${item.name}" readonly></td>
                     </tr>
                     <tr>
                         <th>가격</th>
-                        <td><input type="number" id="price" name="price" style="width: 816px" class="form-control" th:value="${item.price}"></td>
+                        <td><input type="number" id="price" name="price" style="width: 816px" class="form-control" th:value="${item.price}" readonly></td>
                     </tr>
                     <tr>
                         <th>설명</th>
-                        <td><textarea class="form-control" cols="100" rows="30" name="detail" id="detail">[[${item.detail}]]</textarea>
+                        <td><textarea class="form-control" cols="100" rows="30" name="detail" id="detail" readonly>[[${item.detail}]]</textarea>
                         </td>
                     </tr>
                 </table>
 
                 <div id="board-button" style="margin-top: 20px">
                     <div class="container">
-                        <input class="btn btn-dark btn-cancel" type="button" value="취소"
-                               th:onclick="|location.href='@{/admin/items/{itemId}(itemId=${item.id})}'|">
-                        <input class="btn btn-dark btn-add" type="submit" value="저장">
+                        <input class="btn btn-dark btn-cancel" type="button"
+                               th:onclick="|location.href='@{/admin/items}'|" value="취소">
+                        <input class="btn btn-dark btn-add" type="button" value="수정"
+                               th:onclick="|location.href='@{/admin/items/edit/{itemId}(itemId=${item.id})}'|">
                     </div>
                 </div>
             </form>

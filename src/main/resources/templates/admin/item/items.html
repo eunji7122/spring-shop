@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link th:href="@{/css/style-admin.css}" rel="stylesheet" />
+    <link th:href="@{/css/style-admin.css}" rel="stylesheet"/>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script>
         $(document).ready(function () {
@@ -28,14 +28,16 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" th:href="@{/admin/items}" >Admin</a>
+            <a class="navbar-brand" th:href="@{/admin/items}">Admin</a>
             <form th:object="${itemSearch}" method="get" class="searchform order-sm-start order-lg-last">
                 <div class="form-group d-flex">
-                    <input type="search" id="search" th:field="*{name}" class="form-control pl-3" placeholder="상품 이름 검색">
+                    <input type="search" id="search" th:field="*{name}" class="form-control pl-3"
+                           placeholder="상품 이름 검색">
                     <button type="submit" class="form-control search"><span class="fa fa-search"></span></button>
                 </div>
             </form>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                    aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="fa fa-bars"></span> Menu
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
@@ -49,39 +51,42 @@
     <!-- END nav -->
 
     <section class="ftco-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="table-wrap">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>Number</th>
-                                <th>name</th>
-                                <th>price</th>
-                                <th><input id="selectAll" type="checkbox"></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="item : ${items}">
-                                <td th:text="${item.id}"></td>
-                                <td th:text="${item.name}"></td>
-                                <td th:text="${item.price}"></td>
-                                <td>
-                                    <input type="checkbox" id="checkbox-list" name="checkbox-list" >
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+        <form th:action="@{/admin/items/delete}" method="post">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-wrap">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>name</th>
+                                    <th>price</th>
+                                    <th><input id="selectAll" type="checkbox"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="item : ${items}">
+                                    <td><a th:text="${item.id}" th:href="@{/admin/items/{itemId}(itemId=${item.id})}"></a></td>
+                                    <td><a th:text="${item.name}" th:href="@{/admin/items/{itemId}(itemId=${item.id})}"></a></td>
+                                    <td><a th:text="${item.price}" th:href="@{/admin/items/{itemId}(itemId=${item.id})}"></a></td>
+                                    <td>
+                                        <input type="checkbox" id="checkbox-list" name="checkbox-list" th:value="${item.id}">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+                <div style="float: right">
+                    <button type="button" class="btn mb-3 mr-3 btn-secondary"
+                            th:onclick="|location.href='@{/admin/items/new}'|">등록
+                    </button>
+                    <button type="submit" class="btn mb-3 mr-3 btn-secondary">삭제</button>
+                </div>
             </div>
-            <div style="float: right">
-                <button class="btn mb-3 mr-3 btn-secondary">추가</button>
-                <button class="btn mb-3 mr-3 btn-secondary">삭제</button>
-            </div>
-        </div>
-
+        </form>
     </section>
 </section>
 
