@@ -3,6 +3,7 @@ package portfolio.shop.domain.auth;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import portfolio.shop.domain.member.Member;
@@ -32,8 +33,12 @@ public class OAuth2UserDetails implements UserDetails, OAuth2User {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> collection = new ArrayList<>();
-        collection.add((GrantedAuthority) () -> member.getRole().toString());
+        collection.add(new SimpleGrantedAuthority("ROLE_" + member.getRole().toString()));
         return collection;
+    }
+
+    public String test() {
+        return member.getRole().toString();
     }
 
     @Override
