@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/style-admin-item.css}" rel="stylesheet">
     <title>Title</title>
 </head>
@@ -19,15 +20,21 @@
                 <table class="board-table">
                     <tr>
                         <th>상품명</th>
-                        <td><input type="text" id="name" name="name" style="width: 816px" class="form-control" th:value="${item.name}"></td>
+                        <td><input type="text" id="name" name="name" class="form-control" th:value="${item.name}"></td>
                     </tr>
                     <tr>
                         <th>가격</th>
-                        <td><input type="number" id="price" name="price" style="width: 816px" class="form-control" th:value="${item.price}"></td>
+                        <td><input type="number" id="price" name="price" class="form-control" th:value="${item.price}"></td>
                     </tr>
                     <tr>
                         <th>설명</th>
-                        <td><textarea class="form-control" cols="100" rows="30" name="detail" id="detail">[[${item.detail}]]</textarea>
+                        <td><textarea class="form-control" name="detail" id="detail">[[${item.detail}]]</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>사진</th>
+                        <td>
+
                         </td>
                     </tr>
                 </table>
