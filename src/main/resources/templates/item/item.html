@@ -73,9 +73,7 @@
                 <div class="fs-5 mb-5">
                     <span th:text="${item.price}"></span>
                 </div>
-                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem
-                    modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus
-                    ipsam minima ea iste laborum vero?</p>
+                <p class="lead" th:text="${item.detail}"></p>
                 <form th:action='@{/item/{itemId}/cart/add(itemId=${item.id})}' method="post">
                     <div class="d-flex">
                         <input class="form-control text-center me-3" id="count" name="count" type="number" value="1" min="0"
