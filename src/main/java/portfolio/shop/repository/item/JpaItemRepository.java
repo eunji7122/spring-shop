@@ -58,7 +58,7 @@ public class JpaItemRepository implements ItemRepository{
 
     @Override
     public void delete(Long id) {
-        em.remove(findById(id).get());
+        em.remove(findById(id));
     }
 
     private BooleanExpression likeName(String name) {
