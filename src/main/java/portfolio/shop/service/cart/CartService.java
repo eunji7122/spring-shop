@@ -31,13 +31,10 @@ public class CartService {
             cartItem.setItem(item);
             cartItem.setMember(member);
             cartItem.setCount(itemCount);
-            save(cartItem);
+            cartRepository.save(cartItem);
         }
     }
 
-    public CartItem save(CartItem cartItem) {
-        return cartRepository.save(cartItem);
-    }
 
     public void update(Long cartItemId, int count) {
         cartRepository.update(cartItemId, count);
@@ -49,5 +46,13 @@ public class CartService {
 
     public void delete(Long cartItemId) {
         cartRepository.delete(cartItemId);
+    }
+
+    public int getTotalPrice(List<CartItem> cartItems) {
+        int totalPrice = 0;
+        for (CartItem cartItem : cartItems) {
+            totalPrice += cartItem.getItem().getPrice() * cartItem.getCount();
+        }
+        return totalPrice;
     }
 }

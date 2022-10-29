@@ -18,7 +18,6 @@ import portfolio.shop.service.cart.CartService;
 import portfolio.shop.service.item.ItemService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -46,7 +45,7 @@ public class ItemController {
     @PostMapping("/item/{itemId}/cart/add")
     public String AddCart(@PathVariable Long itemId, @ModelAttribute CartItem cartItem, @AuthenticationPrincipal OAuth2UserDetails oAuth2UserDetails) {
         Member member = oAuth2UserDetails.getMember();
-        cartService.addItemToCart(member.getId(), itemId, cartItem.getCount());
+        cartService.addItemToCart(itemId, member.getId(), cartItem.getCount());
 
         return "redirect:/item/{itemId}";
     }

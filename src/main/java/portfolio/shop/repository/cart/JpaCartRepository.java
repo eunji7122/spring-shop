@@ -53,6 +53,6 @@ public class JpaCartRepository implements CartRepository{
 
     @Override
     public void delete(Long cartItemId) {
-        em.remove(findById(cartItemId));
+        em.remove(findById(cartItemId).get());
     }
 }
