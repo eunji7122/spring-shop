@@ -28,16 +28,20 @@ public class ItemController {
     private final CartService cartService;
 
     @GetMapping("/")
-    public String items(@ModelAttribute("itemSearch")ItemSearchCond itemSearch, Model model) {
+    public String items(@ModelAttribute("itemSearch")ItemSearchCond itemSearch, Model model, @AuthenticationPrincipal OAuth2UserDetails oAuth2UserDetails) {
+        Member member = oAuth2UserDetails.getMember();
         List<Item> items = itemService.findItems(itemSearch);
         model.addAttribute("items", items);
+        model.addAttribute("cartItemCount", cartService.findCartItems(member.getId()).size());
         return "home";
     }
 
     @GetMapping("/item/{itemId}")
-    public String item(@PathVariable Long itemId, Model model) {
+    public String item(@PathVariable Long itemId, Model model, @AuthenticationPrincipal OAuth2UserDetails oAuth2UserDetails) {
+        Member member = oAuth2UserDetails.getMember();
         Item item = itemService.findById(itemId).get();
         model.addAttribute("item", item);
+        model.addAttribute("cartItemCount", cartService.findCartItems(member.getId()).size());
 
         return "item/item";
     }

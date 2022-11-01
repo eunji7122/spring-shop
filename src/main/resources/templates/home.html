@@ -57,7 +57,7 @@
                     th:onclick="|location.href='@{/cart}'|" type="button">
                 <i class="bi-cart-fill me-1"></i>
                 Cart
-                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                <span class="badge bg-dark text-white ms-1 rounded-pill" th:text="${cartItemCount}"></span>
             </button>
         </div>
     </div>
@@ -86,7 +86,7 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder"><a th:text="${item.name}" th:href="@{/item/{itemId}(itemId=${item.id})}"></a></h5>
                             <!-- Product price-->
-                            <a th:text="${item.price}"></a>
+                            <a th:text="${item.price}  + ' 원'"></a>
                         </div>
                     </div>
                 </div>
