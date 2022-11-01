@@ -8,9 +8,12 @@ import portfolio.shop.repository.item.ItemRepository;
 import portfolio.shop.repository.item.JpaItemRepository;
 import portfolio.shop.repository.member.JpaMemberRepository;
 import portfolio.shop.repository.member.MemberRepository;
+import portfolio.shop.repository.order.JpaOrderRepository;
+import portfolio.shop.repository.order.OrderRepository;
 import portfolio.shop.service.cart.CartService;
 import portfolio.shop.service.item.ItemService;
 import portfolio.shop.service.member.MemberService;
+import portfolio.shop.service.order.OrderService;
 
 import javax.persistence.EntityManager;
 
@@ -51,5 +54,15 @@ public class Config {
     @Bean
     public CartService cartService() {
         return new CartService(cartRepository());
+    }
+
+    @Bean
+    public OrderRepository orderRepository() {
+        return new JpaOrderRepository(em);
+    }
+
+    @Bean
+    public OrderService orderService() {
+        return new OrderService(orderRepository());
     }
 }

@@ -30,7 +30,7 @@
         <div class="container">
             <a class="navbar-brand" th:href="@{/admin/items}">Admin</a>
             <a class="navbar-brand" th:href="@{/}">Shop</a>
-            <form th:object="${itemSearch}" method="get" class="searchform order-sm-start order-lg-last">
+            <form th:object="${itemSearch}" method="get" class="searchform orders-sm-start orders-lg-last">
                 <div class="form-group d-flex">
                     <input type="search" id="search" th:field="*{name}" class="form-control pl-3"
                            placeholder="상품 이름 검색">

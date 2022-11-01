@@ -3,10 +3,8 @@ package portfolio.shop.domain.member;
 import lombok.Builder;
 import lombok.Data;
 import portfolio.shop.domain.Role;
-import portfolio.shop.domain.cart.CartItem;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
@@ -27,10 +25,6 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private Role role;
-
-    @OneToMany
-    @JoinColumn(name = "cart_item")
-    private List<CartItem> cartItems;
 
     private String provider;   // oauth2를 이용할 경우 어떤 플랫폼을 이용하는지
 

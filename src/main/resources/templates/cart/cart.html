@@ -34,7 +34,8 @@
                         </div>
                         <div class="col" style="margin-top: 30px">
                             <a th:text="${cartItem.item.price} + ' 원'"></a>
-                            <span class="close"><input type="checkbox" id="checkbox-list" name="checkbox-list" th:value="${cartItem.id}"></span>
+                            <span class="close"><input type="checkbox" id="checkbox-list" name="checkbox-list"
+                                                       th:value="${cartItem.id}"></span>
                         </div>
                     </div>
                 </div>
@@ -64,7 +65,9 @@
                 <div class="col">TOTAL PRICE</div>
                 <div class="col text-right" th:text="${totalPrice} + ' 원'"></div>
             </div>
-            <button class="btn">CHECKOUT</button>
+            <form th:action="@{/orders/new}" method="post">
+                <button class="btn">CHECKOUT</button>
+            </form>
         </div>
     </div>
 
