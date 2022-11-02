@@ -18,7 +18,7 @@ public class Orders {
 
     private String name;
 
-    private String price;
+    private int price;
 
     private OrderState state;
 
@@ -29,7 +29,7 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(LocalDate date, String name, String price, OrderState state, Member member) {
+    public Orders(LocalDate date, String name, int price, OrderState state, Member member) {
         this.date = date;
         this.name = name;
         this.price = price;

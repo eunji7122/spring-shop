@@ -53,6 +53,14 @@
                 <li sec:authorize="isAuthenticated()" class="nav-item" style="margin-right: 10px">
                     <a class="nav-link active" th:href="@{/auth/logout}">Logout</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">MyPage</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">회원정보 수정</a></li>
+                        <li><a class="dropdown-item" th:href="@{/order}">주문내역 조회</a></li>
+                    </ul>
+                </li>
             </ul>
 
             <button class="btn btn-outline-dark"
@@ -91,15 +99,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="orders : ${orders}">
-                            <td><a th:text="${item.id}"></a></td>
-                            <td><p th:text="${item.date}"></p>
-                            <td><a th:text="${item.name}"></a></td>
-                            <td><a th:text="${item.price}"></a></td>
-                            <td><a th:text="${item.state}"></a></td>
+                        <tr th:each="order : ${orders}">
+                            <td><a th:text="${order.id}"></a></td>
+                            <td><p th:text="${order.date}"></p>
+                            <td><a th:text="${order.name}"></a></td>
+                            <td><a th:text="${order.price}"></a></td>
+                            <td><a th:text="${order.state}"></a></td>
                             </td>
                             <td>
-                                <button type="submit" class="btn mb-3 mr-3 btn-secondary">취소</button>
+                                <form th:action="@{/order/cancel}" method="post">
+                                    <button type="submit" class="btn mb-3 mr-3 btn-secondary"
+                                    id="cancel-button" name="cancel-button" th:value="${order.id}">취소</button>
+                                </form>
                             </td>
                         </tr>
                         </tbody>
