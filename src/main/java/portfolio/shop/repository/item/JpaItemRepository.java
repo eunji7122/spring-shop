@@ -39,6 +39,8 @@ public class JpaItemRepository implements ItemRepository{
         findItem.setName(updateParam.getName());
         findItem.setPrice(updateParam.getPrice());
         findItem.setDetail(updateParam.getDetail());
+        findItem.setImageName(updateParam.getImageName());
+        findItem.setImagePath(updateParam.getImagePath());
     }
 
     @Override

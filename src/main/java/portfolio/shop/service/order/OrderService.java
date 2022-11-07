@@ -37,6 +37,10 @@ public class OrderService {
         return orderRepository.findAll(memberId);
     }
 
+    public Orders findById(Long orderId) {
+        return orderRepository.findById(orderId).get();
+    }
+
     public void deleteItem(Long id) {
         orderRepository.delete(id);
     }

@@ -1,5 +1,7 @@
 package portfolio.shop.config;
 
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import portfolio.shop.repository.cart.CartRepository;
@@ -12,6 +14,7 @@ import portfolio.shop.repository.order.JpaOrderItemRepository;
 import portfolio.shop.repository.order.JpaOrderRepository;
 import portfolio.shop.repository.order.OrderItemRepository;
 import portfolio.shop.repository.order.OrderRepository;
+import portfolio.shop.service.aws.AwsS3Service;
 import portfolio.shop.service.cart.CartService;
 import portfolio.shop.service.item.ItemService;
 import portfolio.shop.service.member.MemberService;

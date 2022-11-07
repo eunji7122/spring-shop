@@ -16,7 +16,9 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
 
-    public Item save(Item item) {
+    public Item save(Item item, String imageName, String imagePath) {
+        item.setImageName(imageName);
+        item.setImagePath(imagePath);
         return itemRepository.save(item);
     }
 

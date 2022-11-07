@@ -10,4 +10,8 @@ public class ItemUpdateDto {
     private int price;
 
     private String detail;
+
+    private String imageName;
+
+    private String imagePath;
 }

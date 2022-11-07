@@ -5,14 +5,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import portfolio.shop.domain.item.Item;
 import portfolio.shop.domain.item.ItemSearchCond;
 import portfolio.shop.domain.item.ItemUpdateDto;
 import portfolio.shop.domain.member.Member;
+import portfolio.shop.service.aws.AwsS3Service;
 import portfolio.shop.service.item.ItemService;
 import portfolio.shop.service.member.MemberService;
 
+import java.io.IOException;
 import java.util.List;
 
 @Slf4j
@@ -23,6 +26,7 @@ public class AdminController {
 
     private final MemberService memberService;
     private final ItemService itemService;
+    private final AwsS3Service awsS3Service;
 
     @GetMapping()
     public String admin() {
@@ -49,8 +53,11 @@ public class AdminController {
     }
 
     @PostMapping("/items/new")
-    public String addItem(@ModelAttribute Item item, RedirectAttributes redirectAttributes) {
-        Item savedItem = itemService.save(item);
+    public String addItem(@ModelAttribute Item item, RedirectAttributes redirectAttributes, @RequestParam("file") MultipartFile files) throws IOException {
+        String imagePath = awsS3Service.uploadFile(files);
+
+        Item savedItem = itemService.save(item, files.getOriginalFilename(), imagePath);
+
         redirectAttributes.addAttribute("itemId", savedItem.getDetail());
         return "redirect:/admin/items";
     }

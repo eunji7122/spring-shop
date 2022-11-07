@@ -57,7 +57,7 @@
 
     <div id="board-list">
         <div class="container">
-            <form action="item.html" th:action method="post">
+            <form th:action="@{/admin/items/new}" method="post" enctype="multipart/form-data">
                 <table class="board-table">
                     <tr>
                         <th>상품명</th>
@@ -78,8 +78,9 @@
                             <div class="col-sm-6 imgUp">
                                 <div class="imagePreview"></div>
                                 <label class="col-sm-12 btn btn-primary">
-                                    Upload<input type="file" class="uploadFile img" value="Upload Photo"
-                                                 style="width: 0;height: 0;overflow: hidden;">
+                                    Upload
+                                    <input type="file" class="uploadFile img" value="Upload Photo" name="file"
+                                           style="width: 0;height: 0;overflow: hidden;">
                                 </label>
                             </div><!-- col-2 -->
                         </td>

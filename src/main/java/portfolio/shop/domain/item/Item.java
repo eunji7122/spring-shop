@@ -18,9 +18,9 @@ public class Item {
 
     private String detail;
 
-//    @OneToMany
-//    @JoinColumn(name = "image")
-//    private Image image;
+    private String imageName;
+
+    private String imagePath;
 
     public Item() {
     }

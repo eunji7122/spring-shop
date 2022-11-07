@@ -23,6 +23,10 @@ public class QItem extends EntityPathBase<Item> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
+    public final StringPath imageName = createString("imageName");
+
+    public final StringPath imagePath = createString("imagePath");
+
     public final StringPath name = createString("name");
 
     public final NumberPath<Integer> price = createNumber("price", Integer.class);

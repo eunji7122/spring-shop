@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import portfolio.shop.domain.auth.OAuth2UserDetails;
 import portfolio.shop.domain.cart.CartItem;
 import portfolio.shop.domain.member.Member;
+import portfolio.shop.domain.order.OrderState;
 import portfolio.shop.domain.order.Orders;
 import portfolio.shop.service.cart.CartService;
 import portfolio.shop.service.order.OrderItemService;
@@ -59,8 +60,10 @@ public class OrderController {
 
     @PostMapping("/cancel")
     public String CancelOrder(@RequestParam(value = "cancel-button", required = false) Long orderId) {
-        orderItemService.deleteOrderItem(orderId);
-        orderService.deleteItem(orderId);
+        orderService.findById(orderId).setState(OrderState.CANCEL);
+
+//        orderItemService.deleteOrderItem(orderId);
+//        orderService.deleteItem(orderId);
 
         return "redirect:/order";
     }
