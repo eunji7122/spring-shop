@@ -17,6 +17,7 @@ import portfolio.shop.service.member.MemberService;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -27,6 +28,8 @@ public class AdminController {
     private final MemberService memberService;
     private final ItemService itemService;
     private final AwsS3Service awsS3Service;
+
+    private final String basicUrl = "https://djqr6lgzvdpm1.cloudfront.net/";
 
     @GetMapping()
     public String admin() {
@@ -54,9 +57,9 @@ public class AdminController {
 
     @PostMapping("/items/new")
     public String addItem(@ModelAttribute Item item, RedirectAttributes redirectAttributes, @RequestParam("file") MultipartFile files) throws IOException {
-        String imagePath = awsS3Service.uploadFile(files);
+        String imageName = awsS3Service.uploadImage(files);
 
-        Item savedItem = itemService.save(item, files.getOriginalFilename(), imagePath);
+        Item savedItem = itemService.save(item, imageName, basicUrl + imageName);
 
         redirectAttributes.addAttribute("itemId", savedItem.getDetail());
         return "redirect:/admin/items";
@@ -70,7 +73,14 @@ public class AdminController {
     }
 
     @PostMapping("items/edit/{itemId}")
-    public String editItem(@PathVariable Long itemId, @ModelAttribute ItemUpdateDto updateDto) {
+    public String editItem(@PathVariable Long itemId, @ModelAttribute ItemUpdateDto updateDto, @RequestParam("file") MultipartFile files) throws IOException {
+        Item findItem = itemService.findById(itemId).get();
+        awsS3Service.deleteImage(findItem.getImageName());
+
+        String imageName = awsS3Service.uploadImage(files);
+        updateDto.setImageName(imageName);
+        updateDto.setImagePath(basicUrl + imageName);
+
         itemService.update(itemId, updateDto);
         return "redirect:/admin/items/{itemId}";
     }
