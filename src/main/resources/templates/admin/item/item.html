@@ -5,6 +5,20 @@
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/style-admin-item.css}" rel="stylesheet">
     <title>Title</title>
+    <style>
+        .imagePreview {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background: #fff url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg) no-repeat center center;
+            display: inline-block;
+            box-shadow: 0px -3px 6px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .imgUp {
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
 <section class="notice">
@@ -34,7 +48,9 @@
                     <tr>
                         <th>사진</th>
                         <td>
-                            <img th:src="${item.imagePath}" th:value="${item.imageName}" id="imageName">
+                            <div class="col-sm-6 imgUp">
+                                <img class="imagePreview" th:src="${item.imagePath}" th:value="${item.imageName}" id="imageName">
+                            </div>
                         </td>
                     </tr>
                 </table>
